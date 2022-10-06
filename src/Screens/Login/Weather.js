@@ -57,6 +57,8 @@ const Weather = ({navigation}) => {
 
   const getData = async () => {
     const a = await getItem('locationKey');
+    console.log(a, 'aaaaaaaaa');
+
     if (a !== null && a !== undefined) {
       getWeatherApi(a.lat, a.long);
       setStorageData(a);

@@ -16,8 +16,12 @@ const App = () => {
       const permissionIos = await Geolocation.requestAuthorization('whenInUse');
       return permissionIos;
     } else {
-      const permissionAndroid = PermissionsAndroid.request(
+      const permissionAndroid = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+      );
+      console.log(
+        permissionAndroid,
+        'permissionAndroidpermissionAndroidpermissionAndroid',
       );
       if (permissionAndroid === PermissionsAndroid.RESULTS.GRANTED) {
         return 'granted';
@@ -29,7 +33,7 @@ const App = () => {
 
   const checkLocation = async () => {
     const checkData = await getItem('locationKey');
-
+    console.log(checkData, 'checkDatacheckData');
     if (checkData === null) {
       askPermission()
         .then(itm => {
